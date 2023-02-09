@@ -7,3 +7,4 @@ Dasar Pemrograman Javascript ada disini :
 5. Konsep If Nesting
 6. Konsep Segitiga
 7. Suitjawa
+8. Membuat Function
