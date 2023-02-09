@@ -28,7 +28,7 @@ function buatObjectMahasiswa(nama, nrp, email, jurusan) {
 
 var mhs3 = buatObjectMahasiswa("Clarisiela", "20222010016", "clarisiela@gmail.com", "Teknik Pangan");
 
-//Object Constructor
+//Function Constructor
 
 function Mahasiswa(nama, nrp, email, jurusan) {
   this.nama = nama;
