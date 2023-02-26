@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Elements</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.125em;
+        line-height: 1.6;
+        color: #333;
+        padding: 2em;
+      }
+
+      .hero {
+        display: grid;
+        gap: 2em;
+        align-items: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media (min-width: 960px) {
+        .hero {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-bottom: 1500px">Image Elements</h1>
+    <!-- src set untuk responsive web, mengubah gambar sesuai ukuran lebar layar, kalau udah ke large gak balik lagi
+    ke small atau medium, karena sudah kesimpan di cache. Jadi harus clear browser klo mau check ulang -->
+    <!-- Sizes contoh ini, dipake ketika layarnya 1200px mengubah jadi medium gambarnya terus lebarnya setengah viewport/ setengah layar -->
+    <!-- Loading ada 2 attribute, ketika eager gambar diload diawal, lazy ketika gambarnya ga keliatan gambarnya ga diload dlu -->
+    <!-- Figure untuk gambar yang ada captionnya dibawah -->
+    <!-- <figure>
+      <img src="img/cat-small.jpg" alt="kucing abu abu" srcset="img/cat-small.jpg 500w, img/cat-medium.jpg 750w, img/cat-large.jpg 1000w" sizes="(min-width: 1200px) 50vw" loading="lazy" />
+      <figcaption>Kucing Abu Abu</figcaption>
+    </figure> -->
+
+    <!-- Yang ini untuk mengubah jenis gambar berdasarkan DPR (Display Pixel Ratio atau kepadatan pixelnya. Biasanya kepake untuk yang layarnya retina)  -->
+    <!-- <img src="img/cat-small.jpg" alt="kucing abu abu" srcset="img/cat-small.jpg 1x, img/cat-medium.jpg 2x, img/cat-large.jpg 3x" /> -->
+
+    <!-- Picture biar ketika layoutnya berbeda gambarnya juga ingin berbeda -->
+    <div class="hero">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Hallo Alvin</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque obcaecati, qui consectetur reiciendis libero repellat natus facere consequatur inventore nostrum ipsum blanditiis animi quos et! At delectus error et.</p>
+        </div>
+      </div>
+      <picture>
+        <source media="(min-width:960px)" srcset="img2/cat-large.jpg" sizes="50vw" />
+        <source media="(min-width:600px)" srcset="img2/cat-medium.png" sizes="50vw" />
+        <img src="img2/cat-small.jpg" alt="kucing abu abu" />
+      </picture>
+    </div>
+  </body>
+</html>
