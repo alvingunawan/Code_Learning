@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      form {
+        width: 600px;
+        padding: 20px;
+      }
+
+      form div {
+        margin: 10px;
+      }
+
+      label {
+        display: block;
+      }
+
+      input:invalid,
+      input:required:invalid {
+        border: none;
+        outline: 2px solid red;
+        border-radius: 2px;
+      }
+
+      input:valid,
+      input:required {
+        border: 1px solid black;
+        outline: invert;
+        border: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- autocomplete untuk menghapus history yang pernah di input di kolom -->
+    <!-- autofocus untuk langsung focus ke 1 inputan dan mempercepat isi form, gak bisa lebih dari satu -->
+    <!-- required itu biar inputan harus di isi ga boleh kosong -->
+    <!-- step untuk nambahnya per berapa kelipatannya -->
+    <!-- pattern untuk validasi juga, format patternnya pakai regexp -->
+    <!-- ganti pesan validation dengan oninvalid dan setCustomValidity() -->
+    <!-- di form action bisa tambahin atribut novalidate, klo mau nyoba tanpa validasi tanpa harus hapus semua validasinya di tiap item -->
+    <form action="" method="post" autocomplete="off">
+      <div>
+        <label for="nama">Masukan Nama: </label>
+        <input type="text" name="nama" id="nama" autofocus required minlength="2" maxlength="5" oninvalid="this.setCustomValidity('ini harus diisi!')" oninput="this,setCustomValidity('')" />
+      </div>
+      <div>
+        <label for="email">Masukan Email: </label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div>
+        <label for="nohp">Masukan No HP: </label>
+        <input type="tel" name="nohp" id="nohp" pattern="^(\+62|62|0)8[1-9][0-9]{6,9}$" />
+      </div>
+      <div>
+        <label for="website">Masukan URL Website: </label>
+        <input type="url" name="website" id="website" />
+      </div>
+      <div>
+        <label for="angka">Masukan Angka: </label>
+        <input type="number" name="angka" id="angka" min="10" max="100" step="10" />
+      </div>
+      <div>
+        <label for="slider">Masukan Angka: </label>
+        <span class="awal">0</span>
+        <input type="range" name="slider" id="slider" min="0" max="100" step="5" />
+        <span class="akhir">100</span>
+      </div>
+      <div>
+        <label for="tanggal">Masukan Tanggal: </label>
+        <input type="date" name="tanggal" id="tanggal" />
+        <!-- type bisa date,time,week, month -->
+      </div>
+      <div>
+        <label for="warna">Masukan Warna: </label>
+        <input type="color" name="warna" id="warna" />
+        <span class="hexa">#333333</span>
+      </div>
+      <div>
+        <label for="kodepos">Masukan Kode Pos: </label>
+        <input type="text" name="kodepos" id="kodepos" pattern="^([1-9])[0-9]{4}$" />
+      </div>
+      <div>
+        <button type="submit">Kirim!</button>
+      </div>
+    </form>
+    <script>
+      const slider = document.querySelector("#slider");
+      const awal = document.querySelector(".awal");
+      const akhir = document.querySelector(".akhir");
+
+      awal.innerHTML = slider.min;
+      akhir.innerHTML = slider.value;
+      slider.addEventListener("input", function () {
+        akhir.innerHTML = slider.value;
+      });
+
+      const warna = document.querySelector("#warna");
+      const hexa = document.querySelector(".hexa");
+
+      hexa.innerHTML = warna.value;
+      warna.addEventListener("input", function () {
+        hexa.innerHTML = warna.value;
+        hexa.style.color = warna.value;
+      });
+    </script>
+  </body>
+</html>
